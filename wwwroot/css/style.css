@@ -1,0 +1,65 @@
+﻿body {
+}
+
+
+.small-screen {
+    height: 100vh; /* Default styles */
+}
+.pattern {
+    background: radial-gradient(black 3px, transparent 4px), radial-gradient(black 3px, transparent 4px), linear-gradient(#fff 4px, transparent 0), linear-gradient(45deg, transparent 74px, transparent 75px, #a4a4a4 75px, #a4a4a4 76px, transparent 77px, transparent 109px), linear-gradient(-45deg, transparent 75px, transparent 76px, #a4a4a4 76px, #a4a4a4 77px, transparent 78px, transparent 109px), #fff;
+    background-size: 109px 109px, 109px 109px,100% 6px, 109px 109px, 109px 109px;
+    background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+}
+
+
+
+@media (max-width: 576px) {
+    .small-screen {
+        height: 200vh;
+      
+    }
+}
+
+
+@media (max-width: 576px) {
+    .image {
+        width: 100px;
+        height: 150px;
+    }
+}
+
+
+.small-card {
+    max-width: 380px; /* Adjust card width */
+    margin: auto; /* Center the card */
+}
+
+    .small-card img {
+        height: 180px; /* Adjust image height */
+        object-fit: cover; /* Ensure consistent image cropping */
+    }
+
+    .small-card .card-body {
+        font-size: 0.9rem; /* Reduce text size */
+        padding: 0.8rem; /* Compact spacing */
+    }
+
+@media (min-width: 768px) {
+    .small-card {
+        max-width: 260px; /* Adjust size for medium screens */
+    }
+}
+
+@media (min-width: 992px) {
+    .small-card {
+        max-width: 240px; /* Adjust size for larger screens */
+    }
+}
+
+
+.contact {
+    background: radial-gradient(circle, #4f46e4 10%, transparent 11%),radial-gradient(circle at bottom left, #4f46e4 5%, transparent 6%),radial-gradient(circle at bottom right, #4f46e4 5%, transparent 6%),radial-gradient(circle at top left, #4f46e4 5%, transparent 6%),radial-gradient(circle at top right, #4f46e4 5%, transparent 6%);
+    background-size: 1em 1em;
+    background-color: #ffffff;
+    opacity: 0.95
+}

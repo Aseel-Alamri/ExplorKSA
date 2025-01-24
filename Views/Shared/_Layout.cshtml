@@ -4,9 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - FinalWebApplication</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/FinalWebApplication.styles.css" asp-append-version="true" />
 </head>
 <body>
@@ -35,14 +37,14 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="/images/Explorer-KSA.png" width="80" height="80" class="rounded-pill" /></a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="/images/Explorer-KSA.png" width="70" height="70" class="rounded-pill" /></a>
                 <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav d-flex justify-content-center w-100 gap-5">
                         <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="#">Cities</a>
+                        <a class="nav-link text-white" asp-controller="Home" asp-action="Index" asp-fragment="cities">Cities</a>
                         <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="#">Events</a>
                         <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="#">Hotels</a>
 
@@ -58,8 +60,8 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 1446 - FinalWebApplication - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <div class="container text-center">
+            All rights reserved Discover KSA @DateTime.Now.Year
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
