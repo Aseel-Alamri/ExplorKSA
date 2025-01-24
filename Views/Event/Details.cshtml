@@ -5,7 +5,7 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-6">
-            <!-- صورة الفعالية -->
+        
             <img src="@Model.ImageUrl" class="img-fluid rounded shadow" alt="@Model.Name" />
         </div>
         <div class="col-md-6">
@@ -29,20 +29,17 @@
                     <input type="number" id="NumberOfPeople" name="NumberOfPeople" class="form-control" min="1" value="1" required />
                 </div>
 
-                <!-- خيار VIP -->
                 <div class="form-check mb-3">
                     <input class="form-check-input" type="checkbox" id="IsVIP" name="IsVIP" />
                     <label class="form-check-label" for="IsVIP">+40$ for VIP</label>
                 </div>
 
-                <!--  الإرسال -->
              
                 <a asp-action="BookingConfirmation" asp-controller="Event" class="btn btn-success btn-lg mt-3">Book now</a>
             </form>
            
 
 
-            <!-- العودة إلى القائمة -->
             <a asp-action="Index" class="btn btn-secondary btn-lg mt-3">Back to the list</a>
         </div>
     </div>

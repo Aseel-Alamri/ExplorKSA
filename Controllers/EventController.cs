@@ -98,32 +98,31 @@ namespace FinalWebApplication.Controllers
 
 
 
-        // دالة POST التي تعالج البيانات
         [HttpPost]
         public IActionResult Book(DateTime BookingDate, int NumberOfPeople, bool IsVIP)
         {
-            // تحقق من صحة البيانات
+     
             if (BookingDate == DateTime.MinValue || NumberOfPeople <= 0)
             {
                 ViewBag.ErrorMessage = "Please enter valid data.";
                 return View("Details");
             }
 
-            // عرض رسالة النجاح
+   
             ViewBag.Message = $"Booking successfully made on {BookingDate.ToShortDateString()} for {NumberOfPeople} person(s).";
             if (IsVIP)
             {
                 ViewBag.Message += " VIP ticket.";
             }
 
-            return RedirectToAction("BookingConfirmation");  // إعادة التوجيه إلى صفحة تأكيد الحجز
+            return RedirectToAction("BookingConfirmation");
+            
         }
 
-        // دالة GET لعرض صفحة تأكيد الحجز
         [HttpGet]
         public IActionResult BookingConfirmation()
         {
-            return View(); // عرض الفيو الخاص بتأكيد الحجز
+            return View();
         }
 
 
