@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Event\" />
     <Folder Include="Views\Hotel\" />
     <Folder Include="Views\SummaryPage\" />
   </ItemGroup>

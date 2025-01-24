@@ -6,14 +6,25 @@ namespace FinalWebApplication.Models
     {
         [Key]
         public int Id { get; set; }
-        public String Name { get; set; }
-        public String City { get; set; }
+        public string Name { get; set; }
+      
         public DateTime Date { get; set; }
-        public String Description { get; set; }
-        public String Image { get; set; }
+        public string Description { get; set; }
+        public string ImageUrl { get; set; }
+
+        public string Location { get; set; }
+        public double Price { get; set; }
+        public bool IsVip { get; set; }
+
+        public DateTime BookingDate { get; set; }
+        public int NumberOfPeople { get; set; }
 
 
 
 
     }
 }
+
+
+
+
