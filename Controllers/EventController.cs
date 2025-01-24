@@ -1,18 +1,6 @@
-﻿using System;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc;
-using FinalWebApplication.Data;
+﻿using FinalWebApplication.Data;
 using FinalWebApplication.Models;
-using Microsoft.Extensions.Hosting;
-using System.Net.NetworkInformation;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography;
-using System.Threading;
-using Microsoft.AspNetCore.Components.Forms;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Diagnostics.Metrics;
-using System.Reflection;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FinalWebApplication.Controllers
 {
@@ -23,7 +11,7 @@ namespace FinalWebApplication.Controllers
             new Event{
                 Id = 1,
                 Name = "Riyadh Season Races ",
-                Description = "Riyadh Season introduces thrilling horse racing at King Abdulaziz Racetrack, running from October 2023 to April 2024. These events stand as some of the Kingdom’s top sporting attractions, featuring diverse races with local and international horses, promising excitement for all attendees.",
+                Description = "Experience the magic at the enchanted-themed amusement park, with three distinct fantasy worlds offering fun for all ages.",
             Location = "Riyadh",
                 Date = DateTime.Now.AddDays(5),
                 Price = 150,
@@ -32,7 +20,7 @@ namespace FinalWebApplication.Controllers
             new Event{
                 Id = 2,
                 Name = "Wonder Garden",
-                Description = "Experience the adventure in every corner of the second edition of the enchanted-themed amusement park. Step through the grand fantasy gate and immerse yourself in three distinct magical worlds, filled with delight and wonder, offering a fun and unforgettable experience for visitors of all ages.",
+                Description = "Riyadh Season presents thrilling horse races at King Abdulaziz Racetrack (Oct 2023 - Apr 2024), featuring local and international.",
             Location = "Riyadh",
                 Date = DateTime.Now.AddDays(5),
                 Price = 150,
@@ -41,8 +29,8 @@ namespace FinalWebApplication.Controllers
             new Event{
                 Id = 3,
                 Name = "Riyadh Zoo",
-                Description = "Riyadh Zoo reopens with a variety of new educational, interactive, and entertainment activities, including exciting regional events. Visitors can get up close with crocodiles, explore the Kangaroo Arena, interact with birds in the largest birdcage, and enjoy newly expanded zones, making for a memorable day at the zoo.",
-            Location = "Riyadh",
+                Description = "Riyadh Zoo reopens with exciting activities like crocodile encounters, a Kangaroo Arena, and the largest birdcage, plus expanded zones.",
+                Location = "Riyadh",
                 Date = DateTime.Now.AddDays(5),
                 Price = 150,
                 ImageUrl = "https://images.ctfassets.net/vy53kjqs34an/6RzRxAq9Md9wjJtvoqXU1c/5e2ded9d10a39ce36172d0a7517ae715/Page-Cover.jpg?fm=webp&w=1921&h=1281"
@@ -59,7 +47,7 @@ namespace FinalWebApplication.Controllers
             // عرض الفعاليات  بالرياض 
             var riyadhEvents = events.Where(e => e.Location == "Riyadh").ToList();
             return View(riyadhEvents);
-            
+
         }
 
         //عرض تفاصيل فعالية 
@@ -101,14 +89,14 @@ namespace FinalWebApplication.Controllers
         [HttpPost]
         public IActionResult Book(DateTime BookingDate, int NumberOfPeople, bool IsVIP)
         {
-     
+
             if (BookingDate == DateTime.MinValue || NumberOfPeople <= 0)
             {
                 ViewBag.ErrorMessage = "Please enter valid data.";
                 return View("Details");
             }
 
-   
+
             ViewBag.Message = $"Booking successfully made on {BookingDate.ToShortDateString()} for {NumberOfPeople} person(s).";
             if (IsVIP)
             {
@@ -116,7 +104,7 @@ namespace FinalWebApplication.Controllers
             }
 
             return RedirectToAction("BookingConfirmation");
-            
+
         }
 
         [HttpGet]
