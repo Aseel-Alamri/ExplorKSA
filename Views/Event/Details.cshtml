@@ -1,0 +1,46 @@
+﻿@model Event
+
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+        
+            <img width="600" height="600" src="@Model.ImageUrl" class="img-fluid rounded shadow" alt="@Model.Name" />
+        </div>
+        <div class="col-md-6">
+    
+            <!-- تفاصيل الفعالية -->
+            <h1 class="text-success">@Model.Name</h1>
+            <p class="text-muted">@Model.Location</p>
+            <p class="mt-4">@Model.Description</p>
+            <p><strong>Price:</strong> @Model.Price SAR</p>
+
+            <!--  تاريخ الحجز -->
+            <form asp-action="Book" method="post">
+                <div class="mb-3">
+                    <label for="BookingDate" class="form-label"><strong>Which date do you prefer?</strong></label>
+                    <input type="date" id="BookingDate" name="BookingDate" class="form-control" required />
+                </div>
+
+                <!-- عدد الأشخاص -->
+                <div class="mb-3">
+                    <label for="NumberOfPeople" class="form-label"><strong>How many persons?</strong></label>
+                    <input type="number" id="NumberOfPeople" name="NumberOfPeople" class="form-control" min="1" value="1" required />
+                </div>
+
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="IsVIP" name="IsVIP" />
+                    <label class="form-check-label" for="IsVIP">+40$ for VIP</label>
+                </div>
+
+             
+                <a asp-action="BookingConfirmation" asp-controller="Event" class="btn btn-success btn-lg mt-3">Book now</a>
+            </form>
+           
+
+
+            <a asp-action="Index" class="btn btn-secondary btn-lg mt-3">Back to the list</a>
+        </div>
+    </div>
+</div>

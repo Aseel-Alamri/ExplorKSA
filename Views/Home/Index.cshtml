@@ -1,4 +1,4 @@
-﻿@{
+﻿﻿@{
 	ViewData["Title"] = "Home Page";
 }
 
@@ -47,7 +47,7 @@
 
 <section class="small-screen pattern m-auto d-flex align-items-center justify-content-center">
 	<div class="row container-fluid p-4 d-flex">
-	
+
 		<!-- Images Section -->
 	   <div class="col-lg-4">
 	<h1 class="text-center fs-3 fw-bold">Our Events</h1>
@@ -144,7 +144,7 @@
 		<div class="row g-4">
 			<!-- Image 1 -->
 			<div class="col-lg-6 col-sm-12 d-flex justify-content-center">
-				<a class="w-100" asp-action="">
+				<a class="w-100" asp-controller="Event" asp-action="Index">
 					<div class="card text-bg-dark w-100">
 					<img width="300" height="300" src="https://i.pinimg.com/736x/38/1d/5b/381d5b39f4cf982d3bc779463073b0b1.jpg" class="card-img" alt="Riyadh">
 					<div class="card-img-overlay">
@@ -152,7 +152,7 @@
 					</div>
 				</div>
 				</a>
-				
+
 			</div>
 			<!-- Image 2 -->
 			<div class="col-lg-6 col-sm-12 d-flex justify-content-center">
@@ -164,7 +164,7 @@
 						</div>
 					</div>
 				</a>
-				
+
 			</div>
 			<!-- Image 3 -->
 			<div class="col-lg-6 col-sm-12 d-flex justify-content-center">
@@ -176,7 +176,7 @@
 						</div>
 					</div>
 				</a>
-				
+
 			</div>
 			<!-- Image 4 -->
 			<div class="col-lg-6 col-sm-12 d-flex justify-content-center">
@@ -188,7 +188,7 @@
 						</div>
 					</div>
 				</a>
-				
+
 			</div>
 		</div>
 	</div>
@@ -255,24 +255,24 @@
 
 
 @section Scripts {
-				<script>
-					document.addEventListener("DOMContentLoaded", () => {
-						const images = document.querySelectorAll(".image");
+					<script>
+						document.addEventListener("DOMContentLoaded", () => {
+							const images = document.querySelectorAll(".image");
 
-						images.forEach((img) => {
-							img.addEventListener("click", () => {
-								// Clear blurry class from all images
-								images.forEach((otherImg) => {
-									if (otherImg !== img) {
-										otherImg.classList.add("blurry");
-									} else {
-										otherImg.classList.remove("blurry");
-									}
+							images.forEach((img) => {
+								img.addEventListener("click", () => {
+									// Clear blurry class from all images
+									images.forEach((otherImg) => {
+										if (otherImg !== img) {
+											otherImg.classList.add("blurry");
+										} else {
+											otherImg.classList.remove("blurry");
+										}
+									});
 								});
 							});
 						});
-					});
-				</script>
+					</script>
 }
 
 <style>
@@ -290,6 +290,3 @@
 
 
 </style>
-
-
-
