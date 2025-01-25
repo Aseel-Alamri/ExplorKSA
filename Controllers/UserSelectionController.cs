@@ -10,6 +10,11 @@ namespace FinalWebApplication.Controllers
             return View();
         }
 
+        public IActionResult SummaryPage()
+        {
+            return View();
+        }
+
         
     }
 }
