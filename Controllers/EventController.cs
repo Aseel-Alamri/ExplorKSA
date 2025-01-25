@@ -48,6 +48,69 @@ namespace FinalWebApplication.Controllers
             var riyadhEvents = events.Where(e => e.Location == "Riyadh").ToList();
             return View(riyadhEvents);
 
+<<<<<<< HEAD
+        }
+
+        //عرض تفاصيل فعالية 
+        public IActionResult Details(int id)
+        {
+            var selectedEvent = events.FirstOrDefault(e => e.Id == id);
+            if (selectedEvent == null)
+            {
+                return NotFound();
+            }
+            return View(selectedEvent);
+        }
+
+
+
+        //[HttpPost]
+        //public IActionResult Book(DateTime BookingDate, int NumberOfPeople, bool IsVIP)
+        //{
+        //    // Validate the data
+        //    if (BookingDate == DateTime.MinValue || NumberOfPeople <= 0)
+        //    {
+        //        ViewBag.ErrorMessage = "Please enter valid data.";
+        //        return View("Details");
+        //    }
+
+        //    //Prepare a success message using ViewBag
+        //    ViewBag.Message = $"Booking successfully made on {BookingDate.ToShortDateString()} for {NumberOfPeople} person(s).";
+        //    if (IsVIP)
+        //    {
+        //        ViewBag.Message += " VIP ticket.";
+        //    }
+
+        //    return View("BookingConfirmation");
+        //}
+
+
+
+
+        [HttpPost]
+        public IActionResult Book(DateTime BookingDate, int NumberOfPeople, bool IsVIP)
+        {
+
+            if (BookingDate == DateTime.MinValue || NumberOfPeople <= 0)
+            {
+                ViewBag.ErrorMessage = "Please enter valid data.";
+                return View("Details");
+            }
+
+
+            ViewBag.Message = $"Booking successfully made on {BookingDate.ToShortDateString()} for {NumberOfPeople} person(s).";
+            if (IsVIP)
+            {
+                ViewBag.Message += " VIP ticket.";
+            }
+
+            return RedirectToAction("BookingConfirmation");
+
+        }
+
+        [HttpGet]
+        public IActionResult BookingConfirmation()
+=======
         }
 
         //عرض تفاصيل فعالية 
@@ -117,6 +180,7 @@ namespace FinalWebApplication.Controllers
 
         [HttpGet]
         public IActionResult hotelselect()
+>>>>>>> master
         {
             return View();
         }
