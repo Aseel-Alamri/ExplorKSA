@@ -1,0 +1,23 @@
+﻿@model List<Hotel>
+@{
+}
+<div class="container">
+    <div class="row mt-5 d-flex justify-content-center flex-wrap ">
+        @foreach (var i in Model)
+        {
+            <div class="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center mb-4">
+                <div class="card" style="width: 14rem;">
+                    <img src="@i.Image" class="card-img-top img-fluid" alt="Hotel" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">@i.Name</h5>
+                        <p class="card-text">@i.Description</p>
+                        <a href="@i.Address" class="p-2" target="_blank">Show on map</a>
+                        <a class="btn btn-success d-flex align-items-end" asp-action="Reservation" asp-controller="Hotel">
+                            Reservation Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
