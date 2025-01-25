@@ -1,0 +1,15 @@
+﻿
+@model UserSelection
+
+<div class="summary-page">
+    <h2>Summary Page</h2>
+    <p><strong>Selected Category:</strong> SelectedCategory</p>
+    <p><strong>Selected Item:</strong> SelectedItem</p>
+    <p><strong>Price:</strong> Price.ToString("C")</p>
+    <hr />
+    <h3>Total Price:TotalPrice.ToString("C")</h3>
+
+    <form asp-controller="Checkout" asp-action="Index" method="post">
+        <button type="submit" class="btn btn-primary">Proceed to Checkout</button>
+    </form>
+</div>

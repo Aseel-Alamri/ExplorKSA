@@ -75,27 +75,6 @@ namespace FinalWebApplication.Controllers
 
 
 
-        //[HttpPost]
-        //public IActionResult Book(DateTime BookingDate, int NumberOfPeople, bool IsVIP)
-        //{
-        //    // Validate the data
-        //    if (BookingDate == DateTime.MinValue || NumberOfPeople <= 0)
-        //    {
-        //        ViewBag.ErrorMessage = "Please enter valid data.";
-        //        return View("Details");
-        //    }
-
-        //    //Prepare a success message using ViewBag
-        //    ViewBag.Message = $"Booking successfully made on {BookingDate.ToShortDateString()} for {NumberOfPeople} person(s).";
-        //    if (IsVIP)
-        //    {
-        //        ViewBag.Message += " VIP ticket.";
-        //    }
-
-        //    return View("BookingConfirmation");
-        //}
-
-
 
 
         [HttpPost]
