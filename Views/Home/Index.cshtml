@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 ﻿﻿@{
+=======
+﻿@model List<City>
+
+@{
+>>>>>>> master
 	ViewData["Title"] = "Home Page";
 }
 
@@ -8,38 +14,16 @@
 
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" style="height: 90vh;">
 	<div class="carousel-inner" style="height: 100%;">
-		<!-- AlUla -->
-		<div class="carousel-item active" style="height: 100%; position: relative;">
-			<img src="https://details.sa/ar/wp-content/uploads/2024/01/%D8%A7%D9%84%D8%B9%D9%84%D8%A7-3.jpg" class="d-block w-100 h-100 object-fit-cover" alt="AlUla">
-			<div class="position-absolute top-50 start-50 translate-middle text-white text-center">
-				<h1 class="fw-bold display-1">Welcome to AlUla</h1>
-				<p class="fs-4">Explore the beauty of history</p>
+		<!-- Cities Header -->
+		@foreach(var i in Model){
+			<div class="carousel-item active" style="height: 100%; position: relative;">
+				<img src="@i.ImageUrl" class="d-block w-100 h-100 object-fit-cover" alt="AlUla">
+				<div class="position-absolute top-50 start-50 translate-middle text-white text-center">
+					<h1 class="fw-bold display-1">@i.Title</h1>
+					<p class="fs-4">@i.Description</p>
+				</div>
 			</div>
-		</div>
-		<!-- Jeddah -->
-		<div class="carousel-item" style="height: 100%; position: relative;">
-			<img src="https://www.aleqt.com/sites/default/files/styles/scale_830/public/rbitem/2024/05/29/2397711-610433129.jpg?itok=ZV3Yuwcf" class="d-block w-100 h-100 object-fit-cover" alt="Jeddah">
-			<div class="position-absolute top-50 start-50 translate-middle text-white text-center">
-				<h1 class="fw-bold display-1">Welcome to Jeddah</h1>
-				<p class="fs-4">The bride of the Red Sea</p>
-			</div>
-		</div>
-		<!-- Riyadh -->
-		<div class="carousel-item" style="height: 100%; position: relative;">
-			<img src="https://content.r9cdn.net/rimg/dimg/7d/60/488863c5-city-35744-16935f1b104.jpg?width=1366&height=768&xhint=1725&yhint=1010&crop=true" class="d-block w-100 h-100 object-fit-cover" alt="Riyadh">
-			<div class="position-absolute top-50 start-50 translate-middle text-white text-center">
-				<h1 class="fw-bold display-1">Welcome to Riyadh</h1>
-				<p class="fs-4">Experience the capital of culture</p>
-			</div>
-		</div>
-		<!-- Abha -->
-		<div class="carousel-item" style="height: 100%; position: relative;">
-			<img src="https://i.pinimg.com/736x/d2/7a/ae/d27aaef0738de7196fb473479b593582.jpg" class="d-block w-100 h-100 object-fit-cover" alt="Abha">
-			<div class="position-absolute top-50 start-50 translate-middle text-white text-center">
-				<h1 class="fw-bold display-1">Welcome to Abha</h1>
-				<p class="fs-4">Discover the cool highlands to explore</p>
-			</div>
-		</div>
+		}
 	</div>
 </div>
 
@@ -86,10 +70,10 @@
 				/>
 			</div>
 			<div class="p-3 position-relative">
-				<h3 class="position-absolute top-50 start-50 translate-middle text-white fw-bold fs-5">Food</h3>
+				<h3 class="position-absolute top-50 start-50 translate-middle text-white fw-bold fs-5">Contests</h3>
 				<img 
 					class="img-fluid rounded image blurry" 
-					src="~/images/AlUla.jpg" 
+					src="https://img.btolat.com/2023/1/19/news/306673/large.jpg" 
 					alt="AlUla Image 4" 
 					style="width: 200px; height: 250px;" 
 				/>
@@ -138,11 +122,12 @@
 
 	</div>
 </section>
-<section class="small-screen contact d-flex align-items-center justify-content-around id="cities">
+<section class="small-screen contact d-flex align-items-center justify-content-around" id="cities">
 	<div class="container">
 		<h1 class="p-5 text-center fs-1 fw-bold mb-5" style="font-size:50px">Where to go?</h1>
 		<div class="row g-4">
 			<!-- Image 1 -->
+<<<<<<< HEAD
 			<div class="col-lg-6 col-sm-12 d-flex justify-content-center">
 				<a class="w-100" asp-controller="Event" asp-action="Index">
 					<div class="card text-bg-dark w-100">
@@ -190,69 +175,36 @@
 				</a>
 
 			</div>
+=======
+			@foreach(var i in Model){
+					<div class="col-lg-6 col-sm-12 d-flex justify-content-center">
+						<a class="w-100" asp-controller="Event" asp-action="Index">
+						<div class="card text-bg-dark w-100">
+						<img width="300" height="300" src="@i.ImageUrl" class="card-img" alt="Riyadh">
+							<div class="card-img-overlay">
+								<h5 class="card-title h-100 d-flex justify-content-center align-items-center fs-1 fw-bold text-white">
+									@if (i.IsAvailable)
+									{
+										@i.Name
+									}
+									else
+									{
+										@i.Name <span class="text-success">SOON <i class="fa-solid fa-hourglass-start"></i></span>
+									}
+								</h5>
+							</div>
+						</div>
+						</a>
+				</div>
+			}
+
+>>>>>>> master
 		</div>
 	</div>
 </section>
 
-<section class="vh-100 contact d-flex align-items-center justify-content-around">
-	<div class="container">
-		<h1 class="fs-1 fw-bold mb-4">Contact With Developer</h1>
-		<div class="row g-4 z-5">
-			<!-- Card 1 -->
-			<div class="col-lg-4 col-sm-12">
-				<div class="card mb-3 d-flex justify-content-center align-items-center" style="width: 100%;">
-					<div class="card-body text-center">
-						<h5 class="fs-4">Software Developer</h5>
-						<h5 class="card-title fs-3 fw-bold">Abdullah Aljohani</h5>
-						<ul class="d-flex justify-content-center gap-4 fs-1 list-unstyled">
-							<li>
-								<a class="text-black" target="_blank" href="https://www.linkedin.com/in/abdullahjhn/"><i class="fa-brands fa-linkedin"></i></a>
-							</li>
-							<li>
-								<a class="text-black" target="_blank" href="https://github.com/AbdallahLearn"><i class="fa-brands fa-square-github"></i></a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<!-- Card 2 -->
-			<div class="col-lg-4 col-sm-12">
-				<div class="card mb-3 d-flex justify-content-center align-items-center" style="width: 100%;">
-					<div class="card-body text-center">
-						<h5 class="fs-4">Software Developer</h5>
-						<h5 class="card-title fs-3 fw-bold">Heba</h5>
-						<ul class="d-flex justify-content-center gap-4 fs-1 list-unstyled">
-							<li>
-								<a class="text-black" href="#"><i class="fa-brands fa-linkedin"></i></a>
-							</li>
-							<li>
-								<a class="text-black" href="#"><i class="fa-brands fa-square-github"></i></a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<!-- Card 3 -->
-			<div class="col-lg-4 col-sm-12">
-				<div class="card mb-3 d-flex justify-content-center align-items-center" style="width: 100%;">
-					<div class="card-body text-center">
-						<h5 class="fs-4">Software Developer</h5>
-						<h5 class="card-title fs-3 fw-bold">Aseel</h5>
-						<ul class="d-flex justify-content-center gap-4 fs-1 list-unstyled">
-							<li>
-								<a class="text-black" href="#"><i class="fa-brands fa-linkedin"></i></a>
-							</li>
-							<li>
-								<a class="text-black" href="#"><i class="fa-brands fa-square-github"></i></a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
 
+@Html.Partial("_ContactSection", ViewData["Developers"] as List<Developer>)
 
 @section Scripts {
 					<script>

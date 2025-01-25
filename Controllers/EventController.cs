@@ -48,6 +48,7 @@ namespace FinalWebApplication.Controllers
             var riyadhEvents = events.Where(e => e.Location == "Riyadh").ToList();
             return View(riyadhEvents);
 
+<<<<<<< HEAD
         }
 
         //عرض تفاصيل فعالية 
@@ -109,6 +110,77 @@ namespace FinalWebApplication.Controllers
 
         [HttpGet]
         public IActionResult BookingConfirmation()
+=======
+        }
+
+        //عرض تفاصيل فعالية 
+        public IActionResult Details(int id)
+        {
+            var selectedEvent = events.FirstOrDefault(e => e.Id == id);
+            if (selectedEvent == null)
+            {
+                return NotFound();
+            }
+            return View(selectedEvent);
+        }
+
+
+
+        //[HttpPost]
+        //public IActionResult Book(DateTime BookingDate, int NumberOfPeople, bool IsVIP)
+        //{
+        //    // Validate the data
+        //    if (BookingDate == DateTime.MinValue || NumberOfPeople <= 0)
+        //    {
+        //        ViewBag.ErrorMessage = "Please enter valid data.";
+        //        return View("Details");
+        //    }
+
+        //    //Prepare a success message using ViewBag
+        //    ViewBag.Message = $"Booking successfully made on {BookingDate.ToShortDateString()} for {NumberOfPeople} person(s).";
+        //    if (IsVIP)
+        //    {
+        //        ViewBag.Message += " VIP ticket.";
+        //    }
+
+        //    return View("BookingConfirmation");
+        //}
+
+
+
+
+        //[HttpPost]
+        //public IActionResult Book(DateTime? BookingDate, int NumberOfPeople, bool IsVIP)
+        //{
+        //    // Check if the date is null or not selected (DateTime.MinValue is the default value for uninitialized DateTime)
+        //    if (!BookingDate.HasValue || BookingDate.Value == DateTime.MinValue)
+        //    {
+        //        ViewBag.ErrorMessage = "Please select a valid booking date.";
+        //        return View("Details", new { BookingDate, NumberOfPeople, IsVIP }); // Pass current input back to the view
+        //    }
+
+        //    // Check if the number of people is valid
+        //    if (NumberOfPeople <= 0)
+        //    {
+        //        ViewBag.ErrorMessage = "Please enter a valid number of people.";
+        //        return View("Details", new { BookingDate, NumberOfPeople, IsVIP }); // Pass current input back to the view
+        //    }
+
+        //    // Construct success message
+        //    ViewBag.Message = $"Booking successfully made on {BookingDate.Value.ToShortDateString()} for {NumberOfPeople} person(s).";
+        //    if (IsVIP)
+        //    {
+        //        ViewBag.Message += " VIP ticket.";
+        //    }
+
+        //    // Redirect to the confirmation page
+        //    return RedirectToAction("BookingConfirmation");
+        //}
+
+
+        [HttpGet]
+        public IActionResult hotelselect()
+>>>>>>> master
         {
             return View();
         }

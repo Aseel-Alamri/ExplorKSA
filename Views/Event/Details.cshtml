@@ -1,6 +1,7 @@
 ﻿@model Event
 
 
+<<<<<<< HEAD
 
 <div class="container mt-5">
     <div class="row">
@@ -10,6 +11,14 @@
         </div>
         <div class="col-md-6">
     
+=======
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <img width="600" height="600" src="@Model.ImageUrl" class="img-fluid rounded shadow" alt="@Model.Name" />
+        </div>
+        <div class="col-md-6">
+>>>>>>> master
             <!-- تفاصيل الفعالية -->
             <h1 class="text-success">@Model.Name</h1>
             <p class="text-muted">@Model.Location</p>
@@ -17,7 +26,11 @@
             <p><strong>Price:</strong> @Model.Price SAR</p>
 
             <!--  تاريخ الحجز -->
+<<<<<<< HEAD
             <form asp-action="Book" method="post">
+=======
+            <form asp-controller="Hotel" asp-action="hotelselect" method="post" id="bookingForm">
+>>>>>>> master
                 <div class="mb-3">
                     <label for="BookingDate" class="form-label"><strong>Which date do you prefer?</strong></label>
                     <input type="date" id="BookingDate" name="BookingDate" class="form-control" required />
@@ -34,13 +47,37 @@
                     <label class="form-check-label" for="IsVIP">+40$ for VIP</label>
                 </div>
 
+<<<<<<< HEAD
              
                 <a asp-action="BookingConfirmation" asp-controller="Event" class="btn btn-success btn-lg mt-3">Book now</a>
             </form>
            
 
+=======
+                <button type="submit" class="btn btn-success btn-lg mt-3" id="bookNowButton" disabled>Book now</button>
+            </form>
+>>>>>>> master
 
             <a asp-action="Index" class="btn btn-secondary btn-lg mt-3">Back to the list</a>
         </div>
     </div>
 </div>
+<<<<<<< HEAD
+=======
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const bookingDateInput = document.getElementById("BookingDate");
+        const bookNowButton = document.getElementById("bookNowButton");
+
+        bookingDateInput.addEventListener("input", function () {
+            // Enable the button if a date is selected
+            if (bookingDateInput.value) {
+                bookNowButton.disabled = false;
+            } else {
+                bookNowButton.disabled = true;
+            }
+        });
+    });
+</script>
+>>>>>>> master

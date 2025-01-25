@@ -11,6 +11,8 @@ namespace FinalWebApplication.Models
         public String Address { get; set; }
         public String Description { get; set; }
         public String Image { get; set; }
+        //price
+        public decimal Price { get; set; }
         public int EventId { get; set; }  //Foreign Key 
 
     }
