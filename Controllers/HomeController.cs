@@ -11,7 +11,7 @@ namespace FinalWebApplication.Controllers
         private readonly ILogger<HomeController> _logger;
 
 
-        
+
         private readonly ApplicationDbContext _context;//global
 
 
@@ -22,13 +22,13 @@ namespace FinalWebApplication.Controllers
 
         public IActionResult Index()
         {
-           
+
             var cities = _context.Cities.Include(c => c.Events).ToList();
             var developers = new List<Developer>
         {
             new Developer { Name = "Abdullah Aljohani", Role = "Software Developer", LinkedInUrl = "https://www.linkedin.com/in/abdullahjhn/", GitHubUrl = "https://github.com/AbdallahLearn" },
-            new Developer { Name = "Heba", Role = "Software Developer", LinkedInUrl = "https://www.linkedin.com/in/heba-alahmadi", GitHubUrl = "https://github.com/heba1488" },
-            new Developer { Name = "Aseel", Role = "Software Developer", LinkedInUrl = "https://www.linkedin.com/in/aseel-alamri-8290963", GitHubUrl = "https://github.com/Aseel-Alamri" }
+            new Developer { Name = "Heba Alahmadi", Role = "Software Developer", LinkedInUrl = "https://www.linkedin.com/in/heba-alahmadi", GitHubUrl = "https://github.com/heba1488" },
+            new Developer { Name = "Aseel AlAmri", Role = "Software Developer", LinkedInUrl = "https://www.linkedin.com/in/aseel-alamri-829096326", GitHubUrl = "https://github.com/Aseel-Alamri" }
         };
 
             // Pass both lists to the view
@@ -38,7 +38,7 @@ namespace FinalWebApplication.Controllers
 
         }
 
-        
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
