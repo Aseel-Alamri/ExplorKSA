@@ -2,7 +2,7 @@
 @{
 }
 <div class="container">
-    <div class="row mt-5 d-flex justify-content-center flex-wrap">
+    <div class="row mt-5 d-flex justify-content-center flex-wrap ">
         @foreach (var i in Model)
         {
             <div class="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center mb-4">
@@ -12,8 +12,8 @@
                         <h5 class="card-title">@i.Name</h5>
                         <p class="card-text">@i.Description</p>
                         <a href="@i.Address">Show on map</a>
-                        <a asp-action="Reservation" asp-controller="Hotel">
-                            <button type="button" class="btn btn-success">Reservation Details</button>
+                        <a class="btn btn-success d-flex align-items-end" asp-action="Reservation" asp-controller="Hotel">
+                            Reservation Details
                         </a>
                     </div>
                 </div>
