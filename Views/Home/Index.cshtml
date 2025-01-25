@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-﻿﻿@{
-=======
-﻿@model List<City>
+@model List<City>
 
 @{
->>>>>>> master
+
 	ViewData["Title"] = "Home Page";
 }
 
@@ -126,79 +123,35 @@
 	<div class="container">
 		<h1 class="p-5 text-center fs-1 fw-bold mb-5" style="font-size:50px">Where to go?</h1>
 		<div class="row g-4">
-			<!-- Image 1 -->
-<<<<<<< HEAD
-			<div class="col-lg-6 col-sm-12 d-flex justify-content-center">
-				<a class="w-100" asp-controller="Event" asp-action="Index">
-					<div class="card text-bg-dark w-100">
-					<img width="300" height="300" src="https://i.pinimg.com/736x/38/1d/5b/381d5b39f4cf982d3bc779463073b0b1.jpg" class="card-img" alt="Riyadh">
-					<div class="card-img-overlay">
-						<h5 class="card-title h-100 d-flex justify-content-center align-items-center fs-1 fw-bold text-white">Riyadh</h5>
-					</div>
-				</div>
-				</a>
-
-			</div>
-			<!-- Image 2 -->
-			<div class="col-lg-6 col-sm-12 d-flex justify-content-center">
-				<a class="w-100" asp-action="">
-					<div class="card text-bg-dark w-100">
-						<img width="300" height="300" src="https://i.pinimg.com/736x/d2/7a/ae/d27aaef0738de7196fb473479b593582.jpg" class="card-img opacity-75" alt="Riyadh">
-						<div class="card-img-overlay">
-							<h5 class="card-title h-100 d-flex justify-content-center align-items-center fs-1 fw-bold ">Abha <span class="text-success">SOON <i class="fa-solid fa-hourglass-start"></i></span></h5>
-						</div>
-					</div>
-				</a>
-
-			</div>
-			<!-- Image 3 -->
-			<div class="col-lg-6 col-sm-12 d-flex justify-content-center">
-				<a class="w-100" asp-action="">
-					<div class="card text-bg-dark w-100">
-						<img width="300" height="300" src="https://details.sa/ar/wp-content/uploads/2024/01/%D8%A7%D9%84%D8%B9%D9%84%D8%A7-3.jpg" class="card-img opacity-50" alt="Riyadh">
-						<div class="card-img-overlay">
-							<h5 class="card-title h-100 d-flex justify-content-center align-items-center fs-1 fw-bold">AlUla <span class="text-success">SOON <i class="fa-solid fa-hourglass-start"></i></span></h5>
-						</div>
-					</div>
-				</a>
-
-			</div>
-			<!-- Image 4 -->
-			<div class="col-lg-6 col-sm-12 d-flex justify-content-center">
-				<a class="w-100" asp-action="">
-					<div class="card text-bg-dark w-100">
-						<img width="300" height="300" src="https://www.aleqt.com/sites/default/files/styles/scale_830/public/rbitem/2024/05/29/2397711-610433129.jpg?itok=ZV3Yuwcf" class="card-img opacity-50" alt="Riyadh">
-						<div class="card-img-overlay">
-							<h5 class="card-title h-100 d-flex justify-content-center align-items-center fs-1 fw-bold">Jeddah <span class="text-success">SOON <i class="fa-solid fa-hourglass-start"></i></span></h5>
-						</div>
-					</div>
-				</a>
-
-			</div>
-=======
-			@foreach(var i in Model){
-					<div class="col-lg-6 col-sm-12 d-flex justify-content-center">
+			@foreach (var i in Model)
+			{
+				<div class="col-lg-6 col-sm-12 d-flex justify-content-center">
+					@if (i.IsAvailable)
+					{
 						<a class="w-100" asp-controller="Event" asp-action="Index">
+							<div class="card text-bg-dark w-100">
+								<img width="300" height="300" src="@i.ImageUrl" class="card-img" alt="@i.Name" />
+								<div class="card-img-overlay">
+									<h5 class="card-title h-100 d-flex justify-content-center align-items-center fs-1 fw-bold text-white">
+										@i.Name
+									</h5>
+								</div>
+							</div>
+						</a>
+					}
+					else
+					{
 						<div class="card text-bg-dark w-100">
-						<img width="300" height="300" src="@i.ImageUrl" class="card-img" alt="Riyadh">
+							<img width="300" height="300" src="@i.ImageUrl" class="card-img" alt="@i.Name" />
 							<div class="card-img-overlay">
 								<h5 class="card-title h-100 d-flex justify-content-center align-items-center fs-1 fw-bold text-white">
-									@if (i.IsAvailable)
-									{
-										@i.Name
-									}
-									else
-									{
-										@i.Name <span class="text-success">SOON <i class="fa-solid fa-hourglass-start"></i></span>
-									}
+									@i.Name <span class="text-success">SOON <i class="fa-solid fa-hourglass-start"></i></span>
 								</h5>
 							</div>
 						</div>
-						</a>
+					}
 				</div>
 			}
-
->>>>>>> master
 		</div>
 	</div>
 </section>

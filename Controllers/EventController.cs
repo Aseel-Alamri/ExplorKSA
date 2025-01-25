@@ -48,7 +48,7 @@ namespace FinalWebApplication.Controllers
             var riyadhEvents = events.Where(e => e.Location == "Riyadh").ToList();
             return View(riyadhEvents);
 
-<<<<<<< HEAD
+
         }
 
         //عرض تفاصيل فعالية 
@@ -108,21 +108,18 @@ namespace FinalWebApplication.Controllers
 
         }
 
-        [HttpGet]
-        public IActionResult BookingConfirmation()
-=======
-        }
+       
 
         //عرض تفاصيل فعالية 
-        public IActionResult Details(int id)
-        {
-            var selectedEvent = events.FirstOrDefault(e => e.Id == id);
-            if (selectedEvent == null)
-            {
-                return NotFound();
-            }
-            return View(selectedEvent);
-        }
+        //public IActionResult Details(int id)
+        //{
+        //    var selectedEvent = events.FirstOrDefault(e => e.Id == id);
+        //    if (selectedEvent == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return View(selectedEvent);
+        //}
 
 
 
@@ -180,7 +177,7 @@ namespace FinalWebApplication.Controllers
 
         [HttpGet]
         public IActionResult hotelselect()
->>>>>>> master
+
         {
             return View();
         }
