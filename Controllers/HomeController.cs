@@ -70,7 +70,7 @@ namespace FinalWebApplication.Controllers
         {
             new Developer { Name = "Abdullah Aljohani", Role = "Software Developer", LinkedInUrl = "https://www.linkedin.com/in/abdullahjhn/", GitHubUrl = "https://github.com/AbdallahLearn" },
             new Developer { Name = "Heba", Role = "Software Developer", LinkedInUrl = "https://www.linkedin.com/in/heba-alahmadi", GitHubUrl = "https://github.com/heba1488" },
-            new Developer { Name = "Aseel", Role = "Software Developer", LinkedInUrl = "#", GitHubUrl = "https://github.com/Aseel-Alamri" }
+            new Developer { Name = "Aseel", Role = "Software Developer", LinkedInUrl = "https://www.linkedin.com/in/aseel-alamri-829096326", GitHubUrl = "https://github.com/Aseel-Alamri" }
         };
 
             // Pass both lists to the view
