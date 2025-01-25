@@ -65,29 +65,37 @@ namespace FinalWebApplication.Controllers
 
 
 
-        [HttpPost]
-        public IActionResult Book(DateTime BookingDate, int NumberOfPeople, bool IsVIP)
-        {
+        //[HttpPost]
+        //public IActionResult Book(DateTime? BookingDate, int NumberOfPeople, bool IsVIP)
+        //{
+        //    // Check if the date is null or not selected (DateTime.MinValue is the default value for uninitialized DateTime)
+        //    if (!BookingDate.HasValue || BookingDate.Value == DateTime.MinValue)
+        //    {
+        //        ViewBag.ErrorMessage = "Please select a valid booking date.";
+        //        return View("Details", new { BookingDate, NumberOfPeople, IsVIP }); // Pass current input back to the view
+        //    }
 
-            if (BookingDate == DateTime.MinValue || NumberOfPeople <= 0)
-            {
-                ViewBag.ErrorMessage = "Please enter valid data.";
-                return View("Details");
-            }
+        //    // Check if the number of people is valid
+        //    if (NumberOfPeople <= 0)
+        //    {
+        //        ViewBag.ErrorMessage = "Please enter a valid number of people.";
+        //        return View("Details", new { BookingDate, NumberOfPeople, IsVIP }); // Pass current input back to the view
+        //    }
 
+        //    // Construct success message
+        //    ViewBag.Message = $"Booking successfully made on {BookingDate.Value.ToShortDateString()} for {NumberOfPeople} person(s).";
+        //    if (IsVIP)
+        //    {
+        //        ViewBag.Message += " VIP ticket.";
+        //    }
 
-            ViewBag.Message = $"Booking successfully made on {BookingDate.ToShortDateString()} for {NumberOfPeople} person(s).";
-            if (IsVIP)
-            {
-                ViewBag.Message += " VIP ticket.";
-            }
+        //    // Redirect to the confirmation page
+        //    return RedirectToAction("BookingConfirmation");
+        //}
 
-            return RedirectToAction("BookingConfirmation");
-
-        }
 
         [HttpGet]
-        public IActionResult BookingConfirmation()
+        public IActionResult hotelselect()
         {
             return View();
         }

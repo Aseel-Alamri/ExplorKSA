@@ -29,3 +29,14 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    font-family: "IBM Plex Sans Arabic", serif;
+    font-weight: 500;
+    font-style: normal;
+}
