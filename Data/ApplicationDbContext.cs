@@ -7,7 +7,7 @@ namespace FinalWebApplication.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {}
 
-        public DbSet<Event> Events { get; set; }
+        public DbSet<Event> events { get; set; }
 
         public DbSet<Hotel> Hotel { get; set; }
 

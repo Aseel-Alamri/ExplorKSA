@@ -58,8 +58,8 @@
 
 
 .contact {
-    background: radial-gradient(circle, #4f46e4 10%, transparent 11%),radial-gradient(circle at bottom left, #4f46e4 5%, transparent 6%),radial-gradient(circle at bottom right, #4f46e4 5%, transparent 6%),radial-gradient(circle at top left, #4f46e4 5%, transparent 6%),radial-gradient(circle at top right, #4f46e4 5%, transparent 6%);
-    background-size: 1em 1em;
-    background-color: #ffffff;
-    opacity: 0.95
+        background: linear-gradient(to right, rgba(222, 166, 117, 0.5), rgba(173, 103, 69, 0.5));
+/*    background-color: #dea675;*/
+/*    opacity: 0.8;*/
+/*    background-image: repeating-radial-gradient( circle at 0 0, transparent 0, #dea675 12px ), repeating-linear-gradient( #ad674555, #ad6745 );*/
 }
