@@ -1,12 +1,31 @@
+<<<<<<< HEAD
+﻿using Microsoft.AspNetCore.Mvc;
+
+=======
 ﻿using FinalWebApplication.Data;
 using FinalWebApplication.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
+>>>>>>> master
 namespace FinalWebApplication.Controllers
 {
     public class UserSelectionController : Controller
     {
+<<<<<<< HEAD
+        public IActionResult Index()
+        {
+
+            return View();
+        }
+
+        public IActionResult SummaryPage()
+        {
+            return View();
+        }
+
+        
+=======
         // Example database context (replace with your actual DbContext)
         private readonly ApplicationDbContext _context;
 
@@ -255,5 +274,6 @@ namespace FinalWebApplication.Controllers
 
 
 
+>>>>>>> master
     }
 }
