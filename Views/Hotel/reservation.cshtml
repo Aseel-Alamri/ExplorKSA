@@ -1,4 +1,6 @@
-﻿<div class="container-fluid vh-100 d-flex justify-content-center align-items-center position-relative">
+﻿@model List<ReservationOption>
+
+<div class="container-fluid vh-100 d-flex justify-content-center align-items-center position-relative">
     <!-- الخلفية -->
     <div style="background-image: url('https://media.assettype.com/sabq%2Fimport%2Fuploads%2Fmaterial-file%2F5e15a10b544a69dff28b4585%2F5e15a10804b91.jpg?w=1024&auto=format%2Ccompress&fit=max');
                 background-size: cover;
@@ -14,52 +16,52 @@
 
     <!-- الجدول مع القوائم المنسدلة -->
     <div class="container d-flex justify-content-center align-items-center mt-5">
-        <table class="table table-bordered   opacity-75" style="width: 70%;background-color: rgba(211, 211, 211, 0.8)  backdrop-filter: blur(10px); ">
+        <table class="table table-bordered opacity-75" style="width: 70%; background-color: rgba(211, 211, 211, 0.8); backdrop-filter: blur(10px);">
             <thead>
                 <tr>
                     <th>Room Type</th>
                     <th>Number of Guests</th>
                     <th>Meals</th>
                     <th>Price</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <select class="form-select " aria-label="Room Options" style=" background-color: rgba(211, 211, 211, 0.8) ; border-radius: 8px; color: black;">
-                            <option selected disabled>Choose Room Type</option>
-                            <option value="Single Room">Single Room</option>
-                            <option value="Double Room">Double Room</option>
-                            <option value="Family Suite">Family Suite</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select class="form-select" aria-label="Number of Guests" style="background-color: rgba(211, 211, 211, 0.8); border-radius: 8px; color: black;">
-                            <option selected disabled>Choose Number of Guests</option>
-                            <option value="1">1 Guest</option>
-                            <option value="2">2 Guests</option>
-                            <option value="3">3 Guests</option>
-                            <option value="4">4 Guests</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select class="form-select" aria-label="Meals" style="background-color: rgba(211, 211, 211, 0.8); border-radius: 8px; color: black;">
-                            <option selected disabled>Choose Meals</option>
-                            <option value="Breakfast">Breakfast</option>
-                            <option value="Breakfast, Dinner">Breakfast, Dinner</option>
-                            <option value="All Meals">All Meals</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select class="form-select" aria-label="Price" style="background-color: rgba(211, 211, 211, 0.8);  border-radius: 8px; color: black;">
-                            <option selected disabled>Choose Price</option>
-                            <option value="$50">Single Room - $50</option>
-                            <option value="$90">Double Room - $90</option>
-                            <option value="$150">Family Suite - $150</option>
-                        </select>
-                    </td>
-                </tr>
+                @foreach (var option in Model)
+                {
+                    <tr style="cursor: pointer;" onclick="selectRow(this)">
+                        <td>@option.RoomType</td>
+                        <td>@option.NumberOfGuests</td>
+                        <td>@option.Meals</td>
+                        <td>@option.Price</td>
+                        <td>
+                            <form asp-controller="Hotel" asp-action="SummaryPage" method="post">
+                                <input type="hidden" name="roomType" value="Deluxe" />
+                                <input type="hidden" name="isVIP" value="false" />
+                                <button type="submit" class="btn btn-success">Reserve</button>
+                            </form>
+
+
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
 </div>
+
+<script>
+    function selectRow(row) {
+        // Remove active class from all rows
+        document.querySelectorAll('tr').forEach(r => r.classList.remove('table-primary'));
+
+        // Add active class to the selected row
+        row.classList.add('table-primary');
+
+        // Show the button inside the selected row
+        const buttonForm = row.querySelector('form');
+        if (buttonForm) {
+            buttonForm.style.display = 'block';
+        }
+    }
+</script>

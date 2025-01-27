@@ -1,6 +1,7 @@
-﻿@model List<City>
+@model List<City>
 
 @{
+
 	ViewData["Title"] = "Home Page";
 }
 
@@ -27,7 +28,7 @@
 
 <section class="small-screen pattern m-auto d-flex align-items-center justify-content-center">
 	<div class="row container-fluid p-4 d-flex">
-	
+
 		<!-- Images Section -->
 	   <div class="col-lg-4">
 	<h1 class="text-center fs-3 fw-bold">Our Events</h1>
@@ -122,29 +123,41 @@
 	<div class="container">
 		<h1 class="p-5 text-center fs-1 fw-bold mb-5" style="font-size:50px">Where to go?</h1>
 		<div class="row g-4">
-			<!-- Image 1 -->
-			@foreach(var i in Model){
-					<div class="col-lg-6 col-sm-12 d-flex justify-content-center">
-						<a class="w-100" asp-controller="Event" asp-action="Index">
+			@foreach (var i in Model)
+			{
+				<div class="col-lg-6 col-sm-12 d-flex justify-content-center">
+					@if (i.IsAvailable)
+					{
+						@* <form method="post" asp-action="SelectCity" asp-controller="Home"> *@
+						@* 	<input type="hidden" name="cityId" value="@i.Id" /> *@
+						@* 	<button type="submit">@i.Name</button> *@
+						@* </form> *@
+						<form class="w-100" method="post" asp-action="SelectCity" asp-controller="Home">
+							<div class="card text-bg-dark w-100">
+								<img width="300" height="300" src="@i.ImageUrl" class="card-img" alt="@i.Name" />
+								<div class="card-img-overlay">
+									<input type="hidden" name="cityId" value="@i.Id" />
+									<button type="submit" class="opacity-100 card-title w-100 h-100 d-flex justify-content-center align-items-center border-0 bg-transparent">
+										<span class="fs-1 fw-bold text-white z-5">@i.Name</span>
+									</button>
+
+								</div>
+							</div>
+						</form>
+					}
+					else
+					{
 						<div class="card text-bg-dark w-100">
-						<img width="300" height="300" src="@i.ImageUrl" class="card-img" alt="Riyadh">
+							<img width="300" height="300" src="@i.ImageUrl" class="card-img" alt="@i.Name" />
 							<div class="card-img-overlay">
 								<h5 class="card-title h-100 d-flex justify-content-center align-items-center fs-1 fw-bold text-white">
-									@if (i.IsAvailable)
-									{
-										@i.Name
-									}
-									else
-									{
-										@i.Name <span class="text-success">SOON <i class="fa-solid fa-hourglass-start"></i></span>
-									}
+									@i.Name <span class="text-success">SOON <i class="fa-solid fa-hourglass-start"></i></span>
 								</h5>
 							</div>
 						</div>
-						</a>
+					}
 				</div>
 			}
-
 		</div>
 	</div>
 </section>
@@ -153,24 +166,24 @@
 @Html.Partial("_ContactSection", ViewData["Developers"] as List<Developer>)
 
 @section Scripts {
-				<script>
-					document.addEventListener("DOMContentLoaded", () => {
-						const images = document.querySelectorAll(".image");
+					<script>
+						document.addEventListener("DOMContentLoaded", () => {
+							const images = document.querySelectorAll(".image");
 
-						images.forEach((img) => {
-							img.addEventListener("click", () => {
-								// Clear blurry class from all images
-								images.forEach((otherImg) => {
-									if (otherImg !== img) {
-										otherImg.classList.add("blurry");
-									} else {
-										otherImg.classList.remove("blurry");
-									}
+							images.forEach((img) => {
+								img.addEventListener("click", () => {
+									// Clear blurry class from all images
+									images.forEach((otherImg) => {
+										if (otherImg !== img) {
+											otherImg.classList.add("blurry");
+										} else {
+											otherImg.classList.remove("blurry");
+										}
+									});
 								});
 							});
 						});
-					});
-				</script>
+					</script>
 }
 
 <style>
@@ -188,6 +201,3 @@
 
 
 </style>
-
-
-

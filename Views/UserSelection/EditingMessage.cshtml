@@ -1,0 +1,14 @@
+﻿@model UserSelection
+
+<div class="container">
+    <h3>Editing Successful!</h3>
+    <p>Your selection has been updated.</p>
+
+    <p>City: @Model.CityName</p>
+    <p>Event: @Model.EventName</p>
+    <p>Hotel: @Model.HotelName</p>
+
+    <!-- You can add more details as needed -->
+
+    <a href="@Url.Action("Index", "Home")" class="btn btn-primary mt-3">Go to Homepage</a>
+</div>

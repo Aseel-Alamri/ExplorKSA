@@ -1,41 +1,11 @@
 ﻿using FinalWebApplication.Data;
-using FinalWebApplication.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinalWebApplication.Controllers
 {
     public class EventController : Controller
     {
-        private static List<Event> events = new List<Event>
-        {
-            new Event{
-                Id = 1,
-                Name = "Riyadh Season Races ",
-                Description = "Experience the magic at the enchanted-themed amusement park, with three distinct fantasy worlds offering fun for all ages.",
-            Location = "Riyadh",
-                Date = DateTime.Now.AddDays(5),
-                Price = 150,
-                ImageUrl = "https://albiladdaily.com/wp-content/uploads/2024/03/%D8%AE%D9%8A%D9%84-300x224.jpg"
-            },
-            new Event{
-                Id = 2,
-                Name = "Wonder Garden",
-                Description = "Riyadh Season presents thrilling horse races at King Abdulaziz Racetrack (Oct 2023 - Apr 2024), featuring local and international.",
-            Location = "Riyadh",
-                Date = DateTime.Now.AddDays(5),
-                Price = 150,
-                ImageUrl = "https://images.ctfassets.net/vy53kjqs34an/1Rz7ORZVxJThk7W2gwboKv/d7dc8bf512ddc1e7efa7c8b6076ca383/Wonder_Garden_1920_x_1280.jpg"
-            },
-            new Event{
-                Id = 3,
-                Name = "Riyadh Zoo",
-                Description = "Riyadh Zoo reopens with exciting activities like crocodile encounters, a Kangaroo Arena, and the largest birdcage, plus expanded zones.",
-                Location = "Riyadh",
-                Date = DateTime.Now.AddDays(5),
-                Price = 150,
-                ImageUrl = "https://images.ctfassets.net/vy53kjqs34an/6RzRxAq9Md9wjJtvoqXU1c/5e2ded9d10a39ce36172d0a7517ae715/Page-Cover.jpg?fm=webp&w=1921&h=1281"
-            }
-        };
+
         private readonly ApplicationDbContext _context;
         public EventController(ApplicationDbContext context)
         {
@@ -45,15 +15,16 @@ namespace FinalWebApplication.Controllers
         public IActionResult Index()
         {
             // عرض الفعاليات  بالرياض 
-            var riyadhEvents = events.Where(e => e.Location == "Riyadh").ToList();
+            var riyadhEvents = _context.events.Where(e => e.Location == "Riyadh").ToList();
             return View(riyadhEvents);
+
 
         }
 
         //عرض تفاصيل فعالية 
         public IActionResult Details(int id)
         {
-            var selectedEvent = events.FirstOrDefault(e => e.Id == id);
+            var selectedEvent = _context.events.FirstOrDefault(e => e.Id == id);
             if (selectedEvent == null)
             {
                 return NotFound();
@@ -63,41 +34,108 @@ namespace FinalWebApplication.Controllers
 
 
 
+<<<<<<< HEAD
+=======
 
 
-        //[HttpPost]
-        //public IActionResult Book(DateTime? BookingDate, int NumberOfPeople, bool IsVIP)
-        //{
-        //    // Check if the date is null or not selected (DateTime.MinValue is the default value for uninitialized DateTime)
-        //    if (!BookingDate.HasValue || BookingDate.Value == DateTime.MinValue)
-        //    {
-        //        ViewBag.ErrorMessage = "Please select a valid booking date.";
-        //        return View("Details", new { BookingDate, NumberOfPeople, IsVIP }); // Pass current input back to the view
-        //    }
+>>>>>>> master
 
-        //    // Check if the number of people is valid
-        //    if (NumberOfPeople <= 0)
-        //    {
-        //        ViewBag.ErrorMessage = "Please enter a valid number of people.";
-        //        return View("Details", new { BookingDate, NumberOfPeople, IsVIP }); // Pass current input back to the view
-        //    }
 
-        //    // Construct success message
-        //    ViewBag.Message = $"Booking successfully made on {BookingDate.Value.ToShortDateString()} for {NumberOfPeople} person(s).";
-        //    if (IsVIP)
-        //    {
-        //        ViewBag.Message += " VIP ticket.";
-        //    }
 
-        //    // Redirect to the confirmation page
-        //    return RedirectToAction("BookingConfirmation");
-        //}
+        [HttpPost]
+        public IActionResult Book(DateTime BookingDate, int NumberOfPeople, bool IsVIP)
+        {
+
+            if (BookingDate == DateTime.MinValue || NumberOfPeople <= 0)
+            {
+                ViewBag.ErrorMessage = "Please enter valid data.";
+                return View("Details");
+            }
+
+
+            ViewBag.Message = $"Booking successfully made on {BookingDate.ToShortDateString()} for {NumberOfPeople} person(s).";
+            if (IsVIP)
+            {
+                ViewBag.Message += " VIP ticket.";
+            }
+
+            return RedirectToAction("BookingConfirmation");
+
+        }
+
+
+
 
 
         [HttpGet]
         public IActionResult hotelselect()
+
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult SaveEventSelection(int eventId)
+        {
+            var eventDetails = _context.events.FirstOrDefault(e => e.Id == eventId);
+            if (eventDetails == null) return NotFound();
+
+            var userSelection = _context.Userselection.OrderByDescending(u => u.Id).FirstOrDefault();
+            if (userSelection == null) return NotFound();
+
+            userSelection.EventName = eventDetails.Name;
+            userSelection.EventDescription = eventDetails.Description;
+            userSelection.TotalPrice += (decimal)eventDetails.Price;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Details", "Event", new { id = eventId });
+        }
+
+
+
+        [HttpPost]
+        public IActionResult SelectEvent(int eventId)
+        {
+            var selectedEvent = _context.events.Find(eventId);
+            if (selectedEvent != null)
+            {
+                // Store event data in session
+                HttpContext.Session.SetString("EventName", selectedEvent.Name);
+                HttpContext.Session.SetString("EventDescription", selectedEvent.Description);
+
+                // Redirect to event details page
+                return RedirectToAction("Details", new { id = eventId });
+            }
+
+            return View();
+        }
+        [HttpPost]
+        public IActionResult EventDetails(int eventId, int numberOfPeople, DateTime eventDate, bool isVIP, string roomType)
+        {
+            var selectedEvent = _context.events.FirstOrDefault(e => e.Id == eventId);
+            if (selectedEvent != null)
+            {
+                selectedEvent.IsVip = isVIP;
+                _context.SaveChanges();
+
+                HttpContext.Session.SetInt32("NumberOfPeople", numberOfPeople);
+                HttpContext.Session.SetString("EventDate", eventDate.ToString("yyyy-MM-dd"));
+                HttpContext.Session.SetString("IsVIP", isVIP.ToString());
+
+                // Calculate price based on room type
+                decimal basePrice = 150;  // Default price per person
+                decimal vipFee = isVIP ? 40 : 0;
+
+                decimal totalPrice = (basePrice + vipFee) * numberOfPeople;
+
+                HttpContext.Session.SetString("TotalPrice", totalPrice.ToString("F2"));
+
+                // Redirect to hotel selection page or confirmation page
+                return RedirectToAction("hotelselect", "Hotel");
+            }
+
+            return RedirectToAction("Index");
         }
 
 
