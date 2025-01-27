@@ -4,6 +4,7 @@
     <div class="row">
         @foreach (var ev in Model)
         {
+
             <div class="col-md-4 mb-4 d-flex justify-content-center align-items-center justify-content-sm-start">
                 <div class="card h-100 d-flex flex-column" style="width: 18rem;">
                     <img width="200" height="200" src="@ev.ImageUrl" class="card-img-top" alt="@ev.Name" />
@@ -23,7 +24,10 @@
 
                         <!-- Action Button -->
                         <div class="d-flex justify-content-center mt-auto">
-                            <a asp-action="Details" asp-route-id="@ev.Id" class="btn btn-success mt-2">Show Details</a>
+                            <form method="post" asp-action="SelectEvent" asp-controller="Event">
+                                <input type="hidden" name="eventId" value="@ev.Id" />
+                                <button type="submit" class="btn btn-success mt-2">Show Details</button>
+                            </form>
                         </div>
                     </div>
                 </div>

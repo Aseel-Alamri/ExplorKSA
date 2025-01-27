@@ -35,13 +35,13 @@
                         <td>@option.Meals</td>
                         <td>@option.Price</td>
                         <td>
-                            @* <a asp-controller="SummaryPage" asp-action="SummaryPage" asp-route-roomType="@option.RoomType" asp-route-price="@option.Price" class="btn btn-success" style="display: none;"> *@
-                            @*     View Details *@
-                            @* </a> *@
+                            <form asp-controller="Hotel" asp-action="SummaryPage" method="post">
+                                <input type="hidden" name="roomType" value="Deluxe" />
+                                <input type="hidden" name="isVIP" value="false" />
+                                <button type="submit" class="btn btn-success">Reserve</button>
+                            </form>
 
-                            <a asp-controller="UserSelection" asp-action="SummaryPage"  class="btn btn-success" style="display: none;">
-                                View Details
-                            </a>
+
                         </td>
                     </tr>
                 }
@@ -59,9 +59,9 @@
         row.classList.add('table-primary');
 
         // Show the button inside the selected row
-        const button = row.querySelector('a.btn');
-        if (button) {
-            button.style.display = 'inline-block';
+        const buttonForm = row.querySelector('form');
+        if (buttonForm) {
+            buttonForm.style.display = 'block';
         }
     }
 </script>

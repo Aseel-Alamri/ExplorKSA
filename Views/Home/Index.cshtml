@@ -128,16 +128,22 @@
 				<div class="col-lg-6 col-sm-12 d-flex justify-content-center">
 					@if (i.IsAvailable)
 					{
-						<a class="w-100" asp-controller="Event" asp-action="Index">
+						@* <form method="post" asp-action="SelectCity" asp-controller="Home"> *@
+						@* 	<input type="hidden" name="cityId" value="@i.Id" /> *@
+						@* 	<button type="submit">@i.Name</button> *@
+						@* </form> *@
+						<form class="w-100" method="post" asp-action="SelectCity" asp-controller="Home">
 							<div class="card text-bg-dark w-100">
 								<img width="300" height="300" src="@i.ImageUrl" class="card-img" alt="@i.Name" />
 								<div class="card-img-overlay">
-									<h5 class="card-title h-100 d-flex justify-content-center align-items-center fs-1 fw-bold text-white">
-										@i.Name
-									</h5>
+									<input type="hidden" name="cityId" value="@i.Id" />
+									<button type="submit" class="opacity-100 card-title w-100 h-100 d-flex justify-content-center align-items-center border-0 bg-transparent">
+										<span class="fs-1 fw-bold text-white z-5">@i.Name</span>
+									</button>
+
 								</div>
 							</div>
-						</a>
+						</form>
 					}
 					else
 					{

@@ -1,48 +1,63 @@
-﻿@* ﻿@model UserSelection *@
-@{
+﻿@model UserSelection
 
-    ViewData["Title"] = "Home Page";
-}
+@* @model UserSelectionViewModel *@
 
-<div class="container d-flex flex-column justify-content-center align-items-center vh-100">
-    <!-- العنوان -->
-    <h3 class="mb-4 text-center">Here is a summary of your booking</h3>
+@* <div class="container d-flex flex-column justify-content-center align-items-center vh-100"> *@
+@*     <h3 class="mb-4 text-center">Here is a summary of your booking</h3> *@
 
-    <div class="card shadow-lg rounded" style="max-width: 900px; width: 100%;">
-        <div class="row g-0 align-items-center">
-            <!-- قسم الصورة -->
-            <div class="col-md-4">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Riyadh_Skyline.jpg/1920px-Riyadh_Skyline.jpg"
-                     class="img-fluid rounded-start h-100"
-                     alt="event summary">
-            </div>
-            <!-- قسم النصوص -->
-            <div class="col-md-5">
-                <div class="card-body">
-                    <h5 class="card-title">Summary Booking</h5>
-                    <p class="card-text">This is Selection.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    <!-- زر تأكيد الحجز -->
-                    <div class="mt-3">
-                        <button class="btn btn-success w-100">Confirm Reservation</button>
-                    </div>
-                </div>
-            </div>
-            <!-- قسم الأيقونات -->
-            <div class="col-md-3 text-center d-flex align-items-center justify-content-center">
-                <ul class="list-group list-group-horizontal list-unstyled">
-                    <li class="p-2">
-                        <button class="btn btn-outline-primary btn-sm" title="Edit">
-                            <i class="bi bi-pencil"></i>
-                        </button>
-                    </li>
-                    <li class="p-2">
-                        <button class="btn btn-outline-danger btn-sm" title="Delete">
-                            <i class="bi bi-trash-fill"></i>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+@*     <div class="card shadow-lg rounded" style="max-width: 900px; width: 100%;"> *@
+@*         <div class="row g-0 align-items-center"> *@
+@*             <div class="col-md-4"> *@
+@*                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Riyadh_Skyline.jpg/1920px-Riyadh_Skyline.jpg" *@
+@*                      class="img-fluid rounded-start h-100" *@
+@*                      alt="@Model.EventName"> *@
+@*             </div> *@
+@*             <div class="col-md-5"> *@
+@*                 <div class="card-body"> *@
+@*                     <h5 class="card-title">Booking Summary</h5> *@
+@*                     <p><strong>City:</strong> @Model.CityName</p> *@
+@*                     <p><strong>Event:</strong> @Model.EventName</p> *@
+@*                     <p><strong>Description:</strong> @Model.EventDescription</p> *@
+@*                     <p><strong>Hotel:</strong> @Model.HotelName</p> *@
+@*                     <p><strong>Room Type:</strong> @Model.RoomType</p> *@
+@*                     <p><strong>Number of People:</strong> @Model.NumberOfPeople</p> *@
+@*                     <p><strong>VIP:</strong> @(Model.IsVIP ? "Yes" : "No")</p> *@
+@*                     <p><strong>Total Price:</strong> @Model.TotalPrice SAR</p> *@
+
+@*                     <div class="mt-3"> *@
+@*                         <button class="btn btn-success w-100">Confirm Reservation</button> *@
+@*                     </div> *@
+@*                 </div> *@
+@*             </div> *@
+@*         </div> *@
+@*     </div> *@
+@* </div> *@
+
+
+
+<div class="container">
+    <h1>Summary of Your Booking</h1>
+    <p><strong>City:</strong> @Model.CityName</p>
+    <p><strong>Event:</strong> @Model.EventName</p>
+    <p><strong>Description:</strong> @Model.EventDescription</p>
+    <p><strong>Hotel:</strong> @Model.HotelName</p>
+    @* <p><strong>Room Type:</strong> @Model.RoomType</p> *@
+    @* <p><strong>Number of People:</strong> @Model.NumberOfPeople</p> *@
+    @* <p><strong>VIP:</strong> @(Model.IsVIP ? "Yes" : "No")</p> *@
+    @* <p><strong>Event Date:</strong> @Model.EventDate.ToString("yyyy-MM-dd")</p> *@
+    @* <p><strong>Total Price:</strong> @Model.TotalPrice.ToString("C")</p> *@
+
+    <form asp-action="ConfirmSelection" asp-controller="UserSelection" method="post">
+        <input type="hidden" asp-for="CityName" />
+        <input type="hidden" asp-for="EventName" />
+        <input type="hidden" asp-for="EventDescription" />
+        <input type="hidden" asp-for="HotelName" />
+        <input type="hidden" asp-for="RoomType" />
+        <input type="hidden" asp-for="NumberOfPeople" />
+        <input type="hidden" asp-for="IsVIP" />
+        <input type="hidden" asp-for="EventDate" />
+        <input type="hidden" asp-for="TotalPrice" />
+        <button type="submit" class="btn btn-success">Confirm Reservation</button>
+    </form>
 </div>
+

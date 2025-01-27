@@ -15,6 +15,8 @@ namespace FinalWebApplication.Data
         public DbSet<ReservationOption> Reservation { get; set; }
         public DbSet<Booking> Bookings { get; set; }
 
+        public DbSet<UserSelectionViewModel> UserSelectionViewModels { get; set; }
+
 
     }
 }

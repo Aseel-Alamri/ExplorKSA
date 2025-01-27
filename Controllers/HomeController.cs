@@ -45,5 +45,23 @@ namespace FinalWebApplication.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
+        [HttpPost]
+        public IActionResult SelectCity(int cityId)
+        {
+            var city = _context.Cities.Find(cityId);
+            if (city != null)
+            {
+                // Store city in session
+                HttpContext.Session.SetString("CityName", city.Name);
+
+                // Redirect to Event selection
+                return RedirectToAction("Index", "Event");
+            }
+
+            // If city not found, return to the same page
+            return View();
+        }
     }
 }
